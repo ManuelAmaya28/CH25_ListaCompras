@@ -34,7 +34,11 @@ btnAgregar.addEventListener("click", function (event) {
         alertValidaciones.style.display="block";
     } else {
         txtNumber.style.border = "";
-    }//if txtNumber
+    }
+    lista += "</ul>";
+    alertValidacionesTexto.insertAdjacentHTML("beforeend", lista);
+
+    //if txtNumber
 }); //btnAgregar click
 
 txtNumber.addEventListener("blur", function (event) {
