@@ -38,7 +38,7 @@ btnClear.addEventListener("click", function (event) {
 
     localStorage.setItem("contadorProductos", contador);
     localStorage.setItem("totalEnProductos", totalEnProductos);
-    localStorage.setItem("costoTotal", costoTotal.toFixed(2))
+    localStorage.setItem("costoTotal", costoTotal.toFixed(2));
 });//click btnClear
 
 function ValidarCantidad() {
@@ -108,7 +108,7 @@ btnAgregar.addEventListener("click", function (event) {
         precioTotal.innerText = `$ ${costoTotal.toFixed(2)}`;
         localStorage.setItem("contadorProductos", contador);
         localStorage.setItem("totalEnProductos", totalEnProductos);
-        localStorage.setItem("costoTotal", costoTotal.toFixed(2))
+        localStorage.setItem("costoTotal", costoTotal.toFixed(2));
         txtNombre.value = "";
         txtNumber.value = "";
         txtNombre.focus();
@@ -124,3 +124,23 @@ txtNombre.addEventListener("blur", function (event) {
     event.preventDefault();
     txtNombre.value = txtNombre.value.trim();
 }); //txtNombre.blur
+
+window.addEventListener("load", function (event) {
+    if (localStorage.getItem("contadorProductos")==null) {
+        localStorage.setItem("contadorProductos", "0");
+    }//if
+    if (localStorage.getItem("totalEnProductos")==null) {
+        localStorage.setItem("totalEnProductos", "0");
+    }//if
+    if (localStorage.getItem("costoTotal")==null) {
+        localStorage.setItem("costoTotal", "0.0");
+    }//if
+    
+    contador = parseInt(localStorage.getItem("contadorProductos"));
+    totalEnProductos = parseInt(localStorage.getItem("totalEnProductos"));
+    costoTotal = parseFloat (localStorage.getItem("costoTotal"));
+
+    contadorProductos.innerText = contador;
+    productosTotal.innerText = totalEnProductos;
+    precioTotal.innerText = `$ ${costoTotal}`; 
+})
